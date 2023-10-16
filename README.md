@@ -15,10 +15,10 @@ ntptime.settime()
 ```
 
 That's it! The ESP's RTC will now be running with the proper time. Due to time skew that happens especially on ESP32 chipsets you will need to call the ntp.setttime() method
-often to ensure you avoid drift. If you are using an ESP32 and you need very very HIGH accuracy time. I seperate module is probably your best bet such as a DS3231 or something similar to that. ESP32 chips have a colored history for their RTC's. As long as you are aware of these quirks this should work for you. Don't forget to call ntptime.settime() often (once an hour or so) due to the ESP32 RTC being unreliable. This has nothing to do with Micropython. 
+often to ensure you avoid drift/overflows. If you are using an ESP32 and you need very very HIGH accuracy time. A seperate module is probably your best bet such as a DS3231 or something similar to that. ESP32 chips have a colored history for their RTC's. As long as you are aware of these quirks this should work for you. Don't forget to call ntptime.settime() often (once an hour or so) due to the ESP32 RTC being unreliable. This has nothing to do with Micropython. 
 ```
 To print the time out from the RTC (to check for skew or whatever reason):
 print(rtc.datetime())
 ```
-It will return a tuple with a length of 8. You can then proceed to manipulate the the time to create your own printing of time in any format you which. Such as MM/DD/YYYY or HH:MM::SS or whatever you wish. 
+It will return a tuple with a length of 8. You can then proceed to manipulate the the time tuple to create your own printing of time in any format you which. Such as MM/DD/YYYY or HH:MM::SS or whatever you wish. 
 
